@@ -17,17 +17,19 @@ client.on("ready", () => {
 }) 
 client.on("messageCreate", msg => { 
     
-    console.log("Can see a message");
-    console.log("Contents of message", msg.content);
-    const TwitterPreview = /vxtwitter.com/;
-    const TwitterPattern = /twitter.com/;
+    //console.log("Can see a message");
+    //console.log("Contents of message", msg.content);
+    const TwitterPreview = /https:\/\/vxtwitter.com/;
+    const TwitterPattern = /https:\/\/twitter.com/;
+    const XPattern = /https:\/\/x.com/;
+    //console.log("new changes");
     if (TwitterPreview.test(msg.content) == false){
         if ( TwitterPattern.test(msg.content) ){
             msg.reply(msg.content.replace("twitter.com", "vxtwitter.com") ); 
         }
-        else if ( msg.content === "x.com"){
-            msg.content.replace("x.com", "vxtwitter.com") 
-            msg.reply(msg.content);
+        else if ( XPattern.test(msg.content)){
+            //msg.content.replace("x.com", "vxtwitter.com") 
+            msg.reply(msg.content.replace("x.com", "vxtwitter.com"));
         }
     }  
 }) 
