@@ -27,23 +27,21 @@ client.on("ready", () => {
 }) 
 client.on("messageCreate", msg => { 
     
-    //console.log("Can see a message");
-    //console.log("Contents of message", msg.content);
     const TwitterPreview = /https:\/\/vxtwitter.com/;
     const TwitterPattern = /https:\/\/twitter.com/;
     const XPattern = /https:\/\/x.com/;
-    const TikTokPreview = /https:\/\/vxtiktok.com/;
-    const TikTokPattern = /https:\/\/tiktok.com/
+    const TikTokPreview = /https:\/\/www.vxtiktok.com/;
+    const TikTokPattern = /https:\/\/www.tiktok.com/;
     //console.log("new changes");
-    console.log(changePreviewLinks(TwitterPreview, TwitterPattern, msg.content));
-    console.log(changePreviewLinks(TwitterPreview, XPattern, msg.content));
-    console.log(changePreviewLinks(TikTokPreview, TikTokPattern, msg.content));
+    //console.log("Twit:" + changePreviewLinks(TwitterPreview, TwitterPattern, msg.content));
+    //console.log("X:" + changePreviewLinks(TwitterPreview, XPattern, msg.content));
+    ///console.log("Tik:" + changePreviewLinks(TikTokPreview, TikTokPattern, msg.content));
     if (changePreviewLinks(TwitterPreview, TwitterPattern, msg.content)){
         msg.reply(msg.content.replace("twitter.com", "vxtwitter.com") ); 
     } else if (changePreviewLinks(TwitterPreview, XPattern, msg.content)) {
         msg.reply(msg.content.replace("x.com", "vxtwitter.com"));
     } else if (changePreviewLinks(TikTokPreview, TikTokPattern, msg.content)) {
-        msg.reply(msg.content.replace("tiktok.com", "vxttiktok.com"));
+        msg.reply(msg.content.replace("tiktok.com", "vxtiktok.com"));
     }
 }) 
 client.login(process.env.DISCORD_TOKEN);
