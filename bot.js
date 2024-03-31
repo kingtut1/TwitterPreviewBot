@@ -35,7 +35,9 @@ client.on("messageCreate", msg => {
     const TikTokPreview = /https:\/\/vxtiktok.com/;
     const TikTokPattern = /https:\/\/tiktok.com/
     //console.log("new changes");
-
+    console.log(changePreviewLinks(TwitterPreview, TwitterPattern, msg.content));
+    console.log(changePreviewLinks(TwitterPreview, XPattern, msg.content));
+    console.log(changePreviewLinks(TikTokPreview, TikTokPattern, msg.content));
     if (changePreviewLinks(TwitterPreview, TwitterPattern, msg.content)){
         msg.reply(msg.content.replace("twitter.com", "vxtwitter.com") ); 
     } else if (changePreviewLinks(TwitterPreview, XPattern, msg.content)) {
