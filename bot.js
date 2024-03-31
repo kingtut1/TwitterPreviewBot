@@ -32,7 +32,7 @@ client.on("messageCreate", msg => {
     const TikTokPreview = /https:\/\/www.vxtiktok.com/;
     const TikTokPattern = /https:\/\/www.tiktok.com/;
     const InstagramPreview = /https:\/\/g.ddinstagram.com/;
-    const InstagramPattern = /https:\/\/instagram.com/;
+    const InstagramPattern = /https:\/\/www.instagram.com/;
     //console.log("new changes");
     //console.log("Twit:" + changePreviewLinks(TwitterPreview, TwitterPattern, msg.content));
     //console.log("X:" + changePreviewLinks(TwitterPreview, XPattern, msg.content));
