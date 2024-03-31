@@ -26,12 +26,13 @@ client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}!`) 
 }) 
 client.on("messageCreate", msg => { 
-    
     const TwitterPreview = /https:\/\/vxtwitter.com/;
     const TwitterPattern = /https:\/\/twitter.com/;
     const XPattern = /https:\/\/x.com/;
     const TikTokPreview = /https:\/\/www.vxtiktok.com/;
     const TikTokPattern = /https:\/\/www.tiktok.com/;
+    const InstagramPreview = /https:\/\/g.ddinstagram.com/;
+    const InstagramPattern = /https:\/\/instagram.com/;
     //console.log("new changes");
     //console.log("Twit:" + changePreviewLinks(TwitterPreview, TwitterPattern, msg.content));
     //console.log("X:" + changePreviewLinks(TwitterPreview, XPattern, msg.content));
@@ -42,6 +43,8 @@ client.on("messageCreate", msg => {
         msg.reply(msg.content.replace("x.com", "vxtwitter.com"));
     } else if (changePreviewLinks(TikTokPreview, TikTokPattern, msg.content)) {
         msg.reply(msg.content.replace("tiktok.com", "vxtiktok.com"));
+    } else if (changePreviewLinks(InstagramPreview, InstagramPattern, msg.content)) {
+        msg.reply(msg.content.replace("www.instagram.com", "g.ddinstagram.com"));
     }
 }) 
 client.login(process.env.DISCORD_TOKEN);
