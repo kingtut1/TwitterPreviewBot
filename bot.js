@@ -12,25 +12,36 @@ const client = new Discord.Client({
       GatewayIntentBits.MessageContent
     ]
   })
+
+function changePreviewLinks(PreviewPattern, RegularPattern, message){
+    if (PreviewPattern.test(message) == false){
+        if ( RegularPattern.test(message) ){
+            return true;
+        }
+    }
+    return false;
+}
+
 client.on("ready", () => { 
     console.log(`Logged in as ${client.user.tag}!`) 
 }) 
 client.on("messageCreate", msg => { 
     
-    //console.log("Can see a message");
-    //console.log("Contents of message", msg.content);
     const TwitterPreview = /https:\/\/vxtwitter.com/;
     const TwitterPattern = /https:\/\/twitter.com/;
     const XPattern = /https:\/\/x.com/;
+    const TikTokPreview = /https:\/\/www.vxtiktok.com/;
+    const TikTokPattern = /https:\/\/www.tiktok.com/;
     //console.log("new changes");
-    if (TwitterPreview.test(msg.content) == false){
-        if ( TwitterPattern.test(msg.content) ){
-            msg.reply(msg.content.replace("twitter.com", "vxtwitter.com") ); 
-        }
-        else if ( XPattern.test(msg.content)){
-            //msg.content.replace("x.com", "vxtwitter.com") 
-            msg.reply(msg.content.replace("x.com", "vxtwitter.com"));
-        }
-    }  
+    //console.log("Twit:" + changePreviewLinks(TwitterPreview, TwitterPattern, msg.content));
+    //console.log("X:" + changePreviewLinks(TwitterPreview, XPattern, msg.content));
+    ///console.log("Tik:" + changePreviewLinks(TikTokPreview, TikTokPattern, msg.content));
+    if (changePreviewLinks(TwitterPreview, TwitterPattern, msg.content)){
+        msg.reply(msg.content.replace("twitter.com", "vxtwitter.com") ); 
+    } else if (changePreviewLinks(TwitterPreview, XPattern, msg.content)) {
+        msg.reply(msg.content.replace("x.com", "vxtwitter.com"));
+    } else if (changePreviewLinks(TikTokPreview, TikTokPattern, msg.content)) {
+        msg.reply(msg.content.replace("tiktok.com", "vxtiktok.com"));
+    }
 }) 
 client.login(process.env.DISCORD_TOKEN);
