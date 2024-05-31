@@ -28,6 +28,7 @@ client.on("ready", () => {
 client.on("messageCreate", msg => { 
     const TwitterPreview = /https:\/\/vxtwitter.com/;
     const TwitterPattern = /https:\/\/twitter.com/;
+    const XPreview = /https:\/\/fixvx.com/;
     const XPattern = /https:\/\/x.com/;
     const TikTokPreview = /https:\/\/www.vxtiktok.com/;
     const TikTokPattern = /https:\/\/www.tiktok.com/;
@@ -39,8 +40,8 @@ client.on("messageCreate", msg => {
     ///console.log("Tik:" + changePreviewLinks(TikTokPreview, TikTokPattern, msg.content));
     if (changePreviewLinks(TwitterPreview, TwitterPattern, msg.content)){
         msg.reply(msg.content.replace("twitter.com", "vxtwitter.com") ); 
-    } else if (changePreviewLinks(TwitterPreview, XPattern, msg.content)) {
-        msg.reply(msg.content.replace("x.com", "vxtwitter.com"));
+    } else if (changePreviewLinks(XPreview, XPattern, msg.content)) {
+        msg.reply(msg.content.replace("x.com", "fixvx.com"));
     } else if (changePreviewLinks(TikTokPreview, TikTokPattern, msg.content)) {
         msg.reply(msg.content.replace("tiktok.com", "vxtiktok.com"));
     } else if (changePreviewLinks(InstagramPreview, InstagramPattern, msg.content)) {
